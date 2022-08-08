@@ -11,6 +11,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool isHvac = false;
+  bool isLight = false;
+  bool isWindow = false;
+  bool isFan = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -118,13 +123,45 @@ class _HomePageState extends State<HomePage> {
             ]),
           ),
           Container(
-            width: 360,
-            height: 85,
-            margin: const EdgeInsets.only(top: 30),
-            decoration: BoxDecoration(
-                color: const Color.fromRGBO(56, 59, 70, 1),
-                borderRadius: BorderRadius.circular(20)),
-          ),
+              width: 360,
+              height: 85,
+              margin: const EdgeInsets.only(top: 30),
+              decoration: BoxDecoration(
+                  color: const Color.fromRGBO(56, 59, 70, 1),
+                  borderRadius: BorderRadius.circular(20)),
+              child: Row(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(left: 40, right: 24),
+                    child: Icon(
+                      Icons.lock_outline,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const Text(
+                    "Door is locked.",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  Container(
+                    width: 100,
+                    height: 45,
+                    margin: const EdgeInsets.only(left: 50),
+                    decoration: BoxDecoration(
+                      color: const Color.fromRGBO(110, 133, 193, 1),
+                      borderRadius: BorderRadius.circular(55),
+                    ),
+                    child: Container(
+                        margin: const EdgeInsets.only(top: 16, left: 30),
+                        child: const Text(
+                          "Unlock",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold),
+                        )),
+                  )
+                ],
+              )),
           Stack(children: [
             Container(
               width: 250,
@@ -141,6 +178,32 @@ class _HomePageState extends State<HomePage> {
               decoration: BoxDecoration(
                   color: const Color.fromRGBO(56, 59, 70, 1),
                   borderRadius: BorderRadius.circular(80)),
+              child: Container(
+                  margin: const EdgeInsets.only(top: 24, left: 38),
+                  child: const Text(
+                    "Devices",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400),
+                  )),
+            ),
+            Container(
+              width: 135,
+              height: 65,
+              margin: const EdgeInsets.only(top: 30, left: 115),
+              decoration: BoxDecoration(
+                  // color: const Color.fromRGBO(56, 59, 70, 1),
+                  borderRadius: BorderRadius.circular(80)),
+              child: Container(
+                  margin: const EdgeInsets.only(top: 24, left: 42),
+                  child: const Text(
+                    "Rooms",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400),
+                  )),
             ),
           ]),
           Container(
@@ -151,15 +214,302 @@ class _HomePageState extends State<HomePage> {
                 Container(
                   width: 180,
                   height: 220,
-                  decoration: const BoxDecoration(
-                    color: Color.fromRGBO(56, 59, 70, 1),
+                  decoration: BoxDecoration(
+                      color: const Color.fromRGBO(56, 59, 70, 1),
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.all(20),
+                            child: const Icon(
+                              Icons.menu,
+                              size: 32,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 30),
+                        child: const Text(
+                          "HVAC",
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(top: 40, left: 25),
+                            child: Row(
+                              children: [
+                                const GradientText(
+                                  "27",
+                                  style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold),
+                                  gradient: LinearGradient(colors: [
+                                    Color.fromRGBO(255, 255, 255, 1),
+                                    Color.fromRGBO(255, 255, 255, 0)
+                                  ]),
+                                ),
+                                Container(
+                                    margin: const EdgeInsets.only(bottom: 20),
+                                    child: const Text("o",
+                                        style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.bold,
+                                            color: Color.fromRGBO(
+                                                132, 151, 201, 1)))),
+                                Container(
+                                    margin: const EdgeInsets.only(left: 45),
+                                    child: Switch(
+                                      value: isHvac,
+                                      onChanged: (value) {
+                                        setState(() {
+                                          isHvac = value;
+                                        });
+                                      },
+                                      activeColor: const Color.fromRGBO(
+                                          110, 133, 193, 0.5),
+                                    ))
+                              ],
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
                   ),
                 ),
                 Container(
                   width: 180,
                   height: 220,
-                  decoration: const BoxDecoration(
-                    color: Color.fromRGBO(56, 59, 70, 1),
+                  decoration: BoxDecoration(
+                      color: const Color.fromRGBO(56, 59, 70, 1),
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.all(20),
+                            child: const Icon(
+                              Icons.light_outlined,
+                              size: 32,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 30),
+                        child: const Text(
+                          "Lights",
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(top: 40, left: 25),
+                            child: Row(
+                              children: [
+                                const GradientText(
+                                  "OFF",
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                  gradient: LinearGradient(colors: [
+                                    Color.fromRGBO(255, 255, 255, 1),
+                                    Color.fromRGBO(255, 255, 255, 0)
+                                  ]),
+                                ),
+                                Container(
+                                    margin: const EdgeInsets.only(left: 45),
+                                    child: Switch(
+                                      value: isLight,
+                                      onChanged: (value) {
+                                        setState(() {
+                                          isLight = value;
+                                        });
+                                      },
+                                      activeColor: const Color.fromRGBO(
+                                          110, 133, 193, 0.5),
+                                    ))
+                              ],
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.only(top: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Stack(
+                  children: [
+                    Container(
+                      width: 180,
+                      height: 220 - (220 * 50 / 100),
+                      decoration: BoxDecoration(
+                          color: const Color.fromRGBO(56, 59, 70, 1),
+                          borderRadius: BorderRadius.circular(20)),
+                    ),
+                    Container(
+                      width: 180,
+                      height: 220,
+                      decoration: BoxDecoration(
+                          color: const Color.fromRGBO(110, 133, 193, 0.3),
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Container(
+                                margin: const EdgeInsets.all(20),
+                                child: const Icon(
+                                  Icons.menu,
+                                  size: 32,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(top: 30),
+                            child: const Text(
+                              "Water Tank",
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                margin:
+                                    const EdgeInsets.only(top: 50, left: 25),
+                                child: Row(
+                                  children: [
+                                    const GradientText(
+                                      "20",
+                                      style: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.bold),
+                                      gradient: LinearGradient(colors: [
+                                        Color.fromRGBO(255, 255, 255, 1),
+                                        Color.fromRGBO(255, 255, 255, 0)
+                                      ]),
+                                    ),
+                                    Container(
+                                        margin: const EdgeInsets.only(top: 8),
+                                        child: const Text("%",
+                                            style: TextStyle(
+                                                fontSize: 13,
+                                                fontWeight: FontWeight.bold,
+                                                color: Color.fromRGBO(
+                                                    132, 151, 201, 1)))),
+                                    Container(
+                                        margin: const EdgeInsets.only(left: 55),
+                                        child: const Text(
+                                          "Active",
+                                          style: TextStyle(
+                                              color:
+                                                  Color.fromRGBO(0, 255, 41, 1),
+                                              fontSize: 12),
+                                        ))
+                                  ],
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                Container(
+                  width: 180,
+                  height: 220,
+                  decoration: BoxDecoration(
+                      color: const Color.fromRGBO(56, 59, 70, 1),
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.all(20),
+                            child: const Icon(
+                              Icons.menu,
+                              size: 32,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 30),
+                        child: const Text(
+                          "Window",
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(top: 40, left: 25),
+                            child: Row(
+                              children: [
+                                const GradientText(
+                                  "OFF",
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                  gradient: LinearGradient(colors: [
+                                    Color.fromRGBO(255, 255, 255, 1),
+                                    Color.fromRGBO(255, 255, 255, 0)
+                                  ]),
+                                ),
+                                Container(
+                                    margin: const EdgeInsets.only(left: 45),
+                                    child: Switch(
+                                      value: isWindow,
+                                      onChanged: (value) {
+                                        setState(() {
+                                          isWindow = value;
+                                        });
+                                      },
+                                      activeColor: const Color.fromRGBO(
+                                          110, 133, 193, 0.5),
+                                    ))
+                              ],
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
                   ),
                 ),
               ],
