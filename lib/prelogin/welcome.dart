@@ -15,9 +15,12 @@ class _WelcomePageState extends State<WelcomePage> {
       child: Column(children: [
         Container(
             margin: const EdgeInsets.only(top: 200),
-            child: Image.asset("assets/img/SHLOGO.png")),
+            child: Image.asset(
+              "assets/img/SHLOGO.png",
+              width: 230,
+            )),
         Container(
-            margin: const EdgeInsets.only(top: 300),
+            margin: const EdgeInsets.only(top: 270),
             width: 360,
             height: 75,
             child: ElevatedButton(
