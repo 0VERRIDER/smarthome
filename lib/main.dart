@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smarthome/devices/hvac.dart';
 import 'package:smarthome/home/home.dart';
 import 'package:smarthome/prelogin/welcome.dart';
 
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const WelcomePage(),
         '/home': (context) => const HomePage(),
+        '/hvac': (context) => const HvacPage(),
       },
     );
   }

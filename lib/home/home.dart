@@ -211,79 +211,84 @@ class _HomePageState extends State<HomePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Container(
-                  width: 180,
-                  height: 220,
-                  decoration: BoxDecoration(
-                      color: const Color.fromRGBO(56, 59, 70, 1),
-                      borderRadius: BorderRadius.circular(20)),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.all(20),
-                            child: const Icon(
-                              Icons.menu,
-                              size: 32,
-                              color: Colors.white,
+                InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/hvac');
+                  },
+                  child: Container(
+                    width: 180,
+                    height: 220,
+                    decoration: BoxDecoration(
+                        color: const Color.fromRGBO(56, 59, 70, 1),
+                        borderRadius: BorderRadius.circular(20)),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.all(20),
+                              child: const Icon(
+                                Icons.menu,
+                                size: 32,
+                                color: Colors.white,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(top: 30),
-                        child: const Text(
-                          "HVAC",
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
+                          ],
                         ),
-                      ),
-                      Row(
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.only(top: 40, left: 25),
-                            child: Row(
-                              children: [
-                                const GradientText(
-                                  "27",
-                                  style: TextStyle(
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.bold),
-                                  gradient: LinearGradient(colors: [
-                                    Color.fromRGBO(255, 255, 255, 1),
-                                    Color.fromRGBO(255, 255, 255, 0)
-                                  ]),
-                                ),
-                                Container(
-                                    margin: const EdgeInsets.only(bottom: 20),
-                                    child: const Text("o",
-                                        style: TextStyle(
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.bold,
-                                            color: Color.fromRGBO(
-                                                132, 151, 201, 1)))),
-                                Container(
-                                    margin: const EdgeInsets.only(left: 45),
-                                    child: Switch(
-                                      value: isHvac,
-                                      onChanged: (value) {
-                                        setState(() {
-                                          isHvac = value;
-                                        });
-                                      },
-                                      activeColor: const Color.fromRGBO(
-                                          110, 133, 193, 0.5),
-                                    ))
-                              ],
-                            ),
+                        Container(
+                          margin: const EdgeInsets.only(top: 30),
+                          child: const Text(
+                            "HVAC",
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
                           ),
-                        ],
-                      )
-                    ],
+                        ),
+                        Row(
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.only(top: 40, left: 25),
+                              child: Row(
+                                children: [
+                                  const GradientText(
+                                    "27",
+                                    style: TextStyle(
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.bold),
+                                    gradient: LinearGradient(colors: [
+                                      Color.fromRGBO(255, 255, 255, 1),
+                                      Color.fromRGBO(255, 255, 255, 0)
+                                    ]),
+                                  ),
+                                  Container(
+                                      margin: const EdgeInsets.only(bottom: 20),
+                                      child: const Text("o",
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.bold,
+                                              color: Color.fromRGBO(
+                                                  132, 151, 201, 1)))),
+                                  Container(
+                                      margin: const EdgeInsets.only(left: 45),
+                                      child: Switch(
+                                        value: isHvac,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            isHvac = value;
+                                          });
+                                        },
+                                        activeColor: const Color.fromRGBO(
+                                            110, 133, 193, 0.5),
+                                      ))
+                                ],
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 Container(
