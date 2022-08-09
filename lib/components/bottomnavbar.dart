@@ -19,22 +19,22 @@ class BottomNavBar extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: [
             IconButton(
-              onPressed: () => {},
+              onPressed: () => {Navigator.pushNamed(context, '/home')},
               icon: const Icon(Icons.home_outlined),
               color: Colors.white,
             ),
             IconButton(
-              onPressed: () => {},
+              onPressed: () => {Navigator.pushNamed(context, "/uc")},
               icon: const Icon(Icons.flash_on),
               color: Colors.white,
             ),
             IconButton(
-              onPressed: () => {},
+              onPressed: () => {Navigator.pushNamed(context, "/uc")},
               icon: const Icon(Icons.person_outlined),
               color: Colors.white,
             ),
             IconButton(
-              onPressed: () => {},
+              onPressed: () => {Navigator.pushNamed(context, "/uc")},
               icon: const Icon(Icons.settings_outlined),
               color: Colors.white,
             ),
